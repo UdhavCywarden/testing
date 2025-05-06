@@ -27,16 +27,17 @@ A simple and responsive web application that displays real-time weather data for
 ```bash
 git clone https://github.com/yourusername/weather-dashboard.git
 cd weather-dashboard
-
+```
 
 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
-
+```
 3.Set up your API key in a .env file:
+```bash
 OPENWEATHER_API_KEY=your_api_key_here
-
+```
 4. Run the Flask app:
 ```bash
 python app.py
