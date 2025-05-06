@@ -2,10 +2,6 @@
 
 A simple and responsive web application that displays real-time weather data for any city using the OpenWeatherMap API. Built with Python (Flask) and Bootstrap.
 
-## 📸 Screenshot
-
-![Weather Dashboard Screenshot](screenshot.png)
-
 ## 🚀 Features
 
 - Get current weather data by city name
