@@ -1,0 +1,36 @@
+name: Check for README in Repo
+
+on:
+  push:
+    branches:
+      - main
+      - '**'
+
+jobs:
+  check-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Check for README
+        id: readme_check
+        run: |
+          if [ -f README.md ]; then
+            echo "result=Pass" >> $GITHUB_OUTPUT
+          else
+            echo "result=Fail" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Push result to Port
+        uses: port-labs/port-github-action@v1
+        with:
+          clientId: ${{ secrets.PORT_CLIENT_ID }}
+          clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
+          blueprint: githubRepository
+          identifier: ${{ github.repository }}
+          properties: |
+            {
+              "has_readme": "${{ steps.readme_check.outputs.result }}"
+            }
